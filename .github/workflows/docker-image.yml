@@ -4,14 +4,11 @@ on:
   workflow_dispatch
 
 jobs:
-
-  build:
-
+  ubuntu:
+    name: create docker image
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
-    - name: Build the Docker image
-    - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
-    - run: tree
-    - run: docker images
+      - uses: actions/checkout@v2
+      - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - run: tree
+      - run: docker images
