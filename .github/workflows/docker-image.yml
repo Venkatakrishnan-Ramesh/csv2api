@@ -12,6 +12,7 @@ jobs:
       - run: docker build . --file Dockerfile --tag flask-api-v1:latest
       - run: tree
       - run: docker images
+      - run: docker run flask-api-v1:latest
       - uses: ishworkh/docker-image-artifact-upload@v1
         with:
           image: "flask-api-v1:latest"
