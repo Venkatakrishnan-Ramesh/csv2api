@@ -1,4 +1,4 @@
-FROM 3.6-alpine
+FROM alpine:3.4
 MAINTAINER Roshan "dev.vividgoat@gmail.com"
 COPY . /app
 WORKDIR /app
