@@ -7,6 +7,7 @@ RUN apk --update add \
       ca-certificates python \
       ttf-droid \
       py-pip
+RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 ENTRYPOINT ["python"]
 CMD ["app.py"]
