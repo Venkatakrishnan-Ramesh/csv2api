@@ -9,6 +9,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - run: docker build . --file Dockerfile --tag flask-api-v1:latest
       - run: tree
       - run: docker images
+      - uses: ishworkh/docker-image-artifact-upload@v1
+        with:
+          image: "flask-api-v1:latest"
