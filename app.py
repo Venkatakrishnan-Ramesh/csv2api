@@ -7,7 +7,7 @@ app = Flask(__name__)
 def home():
     return """
     <h1>Hey There 👋</h1>
-    <p>head over to <a href="/api/v1?url=sample">Endpoint</a> to view a sample of the API and replace sample with a raw CSV link to get your production ready Backend, already configured for you</p>
+    <p>Head over to <a href="/api/v1?url=sample">Sample endpoint</a> to view a sample of the API and replace "sample" with a raw CSV url to get your Already configured, Production ready Backend!</p>
     """
 
 @app.route('/api/v1')
@@ -26,8 +26,11 @@ def api():
         data = df.to_dict('records')
         return jsonify(data)
     else:
-        df = pd.read_csv(url)
-        data = df.to_dict('records')
+        try:
+            df = pd.read_csv(url)
+            data = df.to_dict('records')
+        except:
+            return "Unexpected error, try checking your raw CSV url"
         return jsonify(data)
 
 
