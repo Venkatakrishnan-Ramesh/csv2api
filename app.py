@@ -23,7 +23,7 @@ def api():
     df = pd.read_csv(url)
     data = df.to_dict('records')
     print(data)
-    return str(data)
+    return jsonify(data)
 
 
 if __name__ == "__main__":
