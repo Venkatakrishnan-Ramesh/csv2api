@@ -1,4 +1,5 @@
 click==8.0.1
+colorama
 dataclasses
 Flask==2.0.1
 importlib-metadata==4.8.1
