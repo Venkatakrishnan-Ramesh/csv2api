@@ -13,6 +13,7 @@ def home():
 @app.route('/api/v1')
 def api():
     url = ''
+    query = False
 
     if 'url' in request.args:
         url = request.args['url']
@@ -20,18 +21,22 @@ def api():
         return jsonify(
             message = "url not found"
         )
+    if 'query' in request.args:
+        query = True
     
-    if (url == 'sample'):
-        df = pd.read_csv('https://raw.githubusercontent.com/dev-Roshan-lab/csv2api/main/sample.csv?token=APHBO3A3CRITP2ZMRKMOIBDBLV2D4')
+
+    if (query == True):
+        print("True")
+        df =  pd.read_csv(url)
+        #query = 'doctor_id == dafs and Team == lol'
+        df.query(query, inplace = True)
         data = df.to_dict('records')
-        return jsonify(data)
     else:
-        try:
-            df = pd.read_csv(url)
-            data = df.to_dict('records')
-        except:
-            return "Unexpected error, try checking your raw CSV url"
-        return jsonify(data)
+        df = pd.read_csv(url)
+        data = df.to_dict('records')
+        #print(data)
+        
+    return str(data)
 
 
 if __name__ == "__main__":
