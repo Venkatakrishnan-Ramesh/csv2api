@@ -22,13 +22,12 @@ def api():
             message = "url not found"
         )
     if 'query' in request.args:
-        query = True
+        query = request.args['query']
     
 
-    if (query == True):
+    if (query != ''):
         print("True")
         df =  pd.read_csv(url)
-        #query = 'doctor_id == dafs and Team == lol'
         df.query(query, inplace = True)
         data = df.to_dict('records')
     else:
@@ -40,4 +39,4 @@ def api():
 
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
