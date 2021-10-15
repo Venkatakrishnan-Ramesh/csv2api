@@ -35,7 +35,7 @@ def api():
         data = df.to_dict('records')
         #print(data)
         
-    return str(data)
+    return jsonify(results = data)
 
 
 if __name__ == "__main__":
