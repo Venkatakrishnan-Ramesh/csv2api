@@ -13,7 +13,7 @@ def home():
 @app.route('/api/v1')
 def api():
     url = ''
-    query = False
+    query = ''
 
     if 'url' in request.args:
         url = request.args['url']
